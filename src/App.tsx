@@ -1,17 +1,12 @@
-import { useEffect } from 'react'
 import { Layout } from './components'
+import ThemeProvider from './context/ThemeProvider'
 
 function App() {
-  useEffect(() => {
-    document
-      .querySelector('body')
-      ?.setAttribute(
-        'class',
-        'bg-veryLightGray dark:bg-veryDarkBlue text-veryDarkBlue dark:text-white'
-      )
-  }, [])
-
-  return <Layout />
+  return (
+    <ThemeProvider>
+      <Layout />
+    </ThemeProvider>
+  )
 }
 
 export default App
