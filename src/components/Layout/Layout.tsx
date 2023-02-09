@@ -20,7 +20,7 @@ function Layout() {
     <>
       <Navbar />
       <main className={styles.mainContainer}>
-        <div>
+        <div className={styles.searchContainer}>
           <Search />
           <Filter />
         </div>

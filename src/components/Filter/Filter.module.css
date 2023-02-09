@@ -1,0 +1,35 @@
+.filterButton {
+  height: 50px;
+  width: 200px;
+  box-shadow: var(--shadow);
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 0 1rem;
+}
+
+.dropdown {
+  position: absolute;
+  right: 0;
+  width: 200px;
+  top: 55px;
+  border-radius: 0.25rem;
+  box-shadow: var(--shadow);
+  overflow: hidden;
+  transition: all ease-in-out 0.15s;
+}
+
+.buttonItem {
+  background: none;
+  width: calc(100% - 2px);
+  text-align: start;
+  margin-left: 1px;
+}
+
+.buttonItem:first-child {
+  margin-top: 1px;
+}
+
+.buttonItem:last-child {
+  margin-bottom: 1px;
+}

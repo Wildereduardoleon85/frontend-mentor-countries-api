@@ -1,5 +1,18 @@
 .mainContainer {
   max-width: 1400px;
-  background-color: grey;
   margin: 0 auto;
+  padding: 0 1rem;
+}
+
+.searchContainer {
+  margin-top: 3rem;
+  display: flex;
+  justify-content: space-between;
+  position: relative;
+}
+
+@media (min-width: 1432px) {
+  .mainContainer {
+    padding: 0;
+  }
 }

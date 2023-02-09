@@ -1,26 +1,28 @@
 import { useTheme } from '../../hooks'
-import { MoonIcon } from '../Icons'
 import styles from './Navbar.module.css'
-
-const { header, navbar, switchButton, icon } = styles
+import { MoonIcon, SunIcon } from '../Icons'
+import { Button } from '../Ui'
 
 function Navbar() {
-  const { textColor, elementColor, toggleDarkMode } = useTheme()
+  const {
+    isDarkMode,
+    elementColor: backgroundColor,
+    toggleDarkMode,
+  } = useTheme()
 
   return (
-    <header style={{ backgroundColor: elementColor }} className={header}>
-      <nav className={navbar}>
+    <header style={{ backgroundColor }} className={styles.header}>
+      <nav className={styles.navbar}>
         <h1>Where in the world?</h1>
-        <div>
-          <button
-            style={{ color: textColor }}
-            className={switchButton}
-            type='button'
-            onClick={toggleDarkMode}
-          >
-            <MoonIcon style={{ stroke: textColor }} className={icon} />
-            <p>Dark Mode</p>
-          </button>
+        <div className={styles.switchButton}>
+          <Button onClick={toggleDarkMode}>
+            {isDarkMode ? (
+              <SunIcon className={styles.icon} />
+            ) : (
+              <MoonIcon className={styles.icon} />
+            )}
+            <p>{isDarkMode ? 'Light Mode' : 'Dark Mode'}</p>
+          </Button>
         </div>
       </nav>
     </header>

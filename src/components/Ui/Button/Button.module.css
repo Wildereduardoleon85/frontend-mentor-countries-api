@@ -1,0 +1,23 @@
+.button {
+  background-color: var(--white);
+  border: none;
+  border-radius: 0.25rem;
+  padding: 1rem;
+  color: var(--veryDarkBlue);
+  cursor: pointer;
+  transition: background-color ease-in-out 0.15s;
+}
+
+.button:hover {
+  background-color: rgb(241, 241, 241);
+}
+
+.button.dark {
+  background-color: var(--darkBlue);
+  color: var(--white);
+  outline-color: var(--white);
+}
+
+.button.dark:hover {
+  background-color: var(--mediumDarkblue);
+}
