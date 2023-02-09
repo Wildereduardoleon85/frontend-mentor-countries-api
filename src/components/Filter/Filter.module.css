@@ -19,6 +19,15 @@
   transition: all ease-in-out 0.15s;
 }
 
+.chevronIcon {
+  stroke-width: 3px;
+  transition: transform ease-in-out 0.2s;
+}
+
+.chevronIcon.spin {
+  transform: rotate(-180deg);
+}
+
 .buttonItem {
   background: none;
   width: calc(100% - 2px);
