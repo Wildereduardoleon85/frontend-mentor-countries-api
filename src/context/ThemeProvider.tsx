@@ -1,31 +1,23 @@
-import { useMemo, useReducer } from 'react'
-import { ThemeState } from '../types'
+import { useMemo, useState } from 'react'
 import ThemeContext from './ThemeContext'
-import themeReducer from './themeReducer'
 
 type ThemeProviderProps = {
   children: JSX.Element | JSX.Element[]
 }
 
-const initialState: ThemeState = {
-  isDarkMode: false,
-}
-
 function ThemeProvider({ children }: ThemeProviderProps) {
-  const [state, dispatch] = useReducer(themeReducer, initialState)
+  const [isDarkMode, setIsDarkMode] = useState<boolean>(false)
 
   function toggleDarkMode() {
-    dispatch({
-      type: 'toggleDarkMode',
-    })
+    setIsDarkMode(!isDarkMode)
   }
 
   const memoizedState = useMemo(
     () => ({
-      state,
+      isDarkMode,
       toggleDarkMode,
     }),
-    [state, dispatch]
+    [isDarkMode, toggleDarkMode]
   )
 
   return (

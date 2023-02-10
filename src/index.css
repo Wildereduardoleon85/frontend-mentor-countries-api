@@ -24,3 +24,15 @@ body {
   background-color: var(--mediumDarkblue);
   color: var(--white);
 }
+
+@media (max-width: 520px) {
+  html {
+    font-size: 14px;
+  }
+}
+
+@media (max-width: 340px) {
+  html {
+    font-size: 12px;
+  }
+}

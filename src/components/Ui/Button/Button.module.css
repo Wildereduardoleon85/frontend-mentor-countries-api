@@ -6,10 +6,15 @@
   color: var(--veryDarkBlue);
   cursor: pointer;
   transition: background-color ease-in-out 0.15s;
+  outline: none;
 }
 
 .button:hover {
-  background-color: rgb(241, 241, 241);
+  background-color: #f1f1f1;
+}
+
+.button:focus-visible {
+  border: 2px solid var(--darkBlue);
 }
 
 .button.dark {
@@ -18,6 +23,10 @@
   outline-color: var(--white);
 }
 
+.button.dark:focus-visible {
+  border: 2px solid var(--white);
+}
+
 .button.dark:hover {
-  background-color: var(--mediumDarkblue);
+  background-color: #404c57;
 }

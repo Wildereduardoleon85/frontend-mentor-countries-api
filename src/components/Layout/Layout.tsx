@@ -1,5 +1,5 @@
 import { useLayoutEffect } from 'react'
-import { Filter, Navbar, Search } from '..'
+import { CountriesContainer, Filter, Navbar, Search } from '..'
 import { useTheme } from '../../hooks'
 import styles from './Layout.module.css'
 
@@ -20,11 +20,13 @@ function Layout() {
     <>
       <Navbar />
       <main className={styles.mainContainer}>
-        <div className={styles.searchContainer}>
+        <section className={styles.searchContainer}>
           <Search />
           <Filter />
-        </div>
-        <div>Countries container</div>
+        </section>
+        <section>
+          <CountriesContainer />
+        </section>
       </main>
     </>
   )

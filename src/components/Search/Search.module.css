@@ -4,7 +4,7 @@
   border-radius: 0.25rem;
   display: flex;
   align-items: center;
-  width: 400px;
+  width: 500px;
   box-shadow: var(--shadow);
 }
 
@@ -25,4 +25,16 @@ input::placeholder {
 .searchIcon {
   margin-left: 0.5rem;
   font-size: 1.25rem;
+}
+
+@media (max-width: 780px) {
+  .searchContainer {
+    width: 400px;
+  }
+}
+
+@media (max-width: 670px) {
+  .searchContainer {
+    width: 100%;
+  }
 }

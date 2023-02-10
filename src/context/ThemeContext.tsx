@@ -1,8 +1,7 @@
 import { createContext } from 'react'
-import { ThemeState } from '../types'
 
 type ThemeContextProps = {
-  state: ThemeState
+  isDarkMode: boolean
   toggleDarkMode: () => void
 }
 

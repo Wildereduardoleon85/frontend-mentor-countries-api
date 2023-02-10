@@ -16,3 +16,9 @@
     padding: 0;
   }
 }
+
+@media (max-width: 670px) {
+  .searchContainer {
+    display: block;
+  }
+}
