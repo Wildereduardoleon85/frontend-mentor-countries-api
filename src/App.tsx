@@ -1,10 +1,12 @@
 import { Layout } from './components'
-import ThemeProvider from './context/ThemeProvider'
+import { CountriesProvider, ThemeProvider } from './context'
 
 function App() {
   return (
     <ThemeProvider>
-      <Layout />
+      <CountriesProvider>
+        <Layout />
+      </CountriesProvider>
     </ThemeProvider>
   )
 }

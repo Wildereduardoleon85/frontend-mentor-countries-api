@@ -1,25 +1,38 @@
-import countries from '../../data/countries.json'
-import { useTheme } from '../../hooks'
+import { useEffect, useState } from 'react'
 import styles from './CountriesContainer.module.css'
+import { CountryCard } from '..'
+import { PaginationItems } from '../../types'
+import { useCountries } from '../../hooks'
+
+function getPaginationItems(
+  itemsPerPage: number,
+  page: number,
+  limit: number
+): PaginationItems | null {
+  const totalOfPages = Math.floor(limit / itemsPerPage)
+
+  if (page < 1 || page > totalOfPages + 1) return null
+
+  return {
+    firstItem: itemsPerPage * (page - 1),
+    lastItem: page > totalOfPages ? limit : itemsPerPage * page,
+  }
+}
 
 function CountriesContainer() {
-  const { elementColor } = useTheme()
+  const { isLoading, countries, error } = useCountries()
+  const [page, setPage] = useState<number>(1)
+  const [{ firstItem, lastItem }, setPagination] = useState<PaginationItems>({
+    firstItem: 0,
+    lastItem: 8,
+  })
 
-  function getCountriesData(countriesData: Array<any>) {
-    return countriesData.map((countryData) => ({
-      name: countryData.name,
-      nativeName: countryData.nativeName,
-      population: countryData.population,
-      region: countryData.region,
-      subregion: countryData.subregion,
-      capital: countryData.capital,
-      topLevelDomain: countryData.topLevelDomain,
-      currencies: countryData.currencies,
-      languages: countryData.languages,
-      borders: countryData.borders,
-      flagImage: countryData.flags.png,
-    }))
-  }
+  useEffect(() => {
+    if (countries.length) {
+      const pagination = getPaginationItems(8, page, countries.length)
+      setPagination(pagination as PaginationItems)
+    }
+  }, [countries, page])
 
   //   const arr: any = []
 
@@ -29,66 +42,37 @@ function CountriesContainer() {
   //     }
   //   })
 
-  //   const itemsPerPage = 8
-  //   const length = 250
+  if (isLoading) {
+    return <h2>Loading...</h2>
+  }
 
-  //   function getBegNadEnd(page: number, len: number) {
-  //     const totalOfPages = Math.floor(length / itemsPerPage)
-
-  //     if (page > totalOfPages + 1) {
-  //       return null
-  //     }
-
-  //     if (page === 1) {
-  //       return {
-  //         beg: 0,
-  //         end: itemsPerPage * page,
-  //       }
-  //     }
-
-  //     return {
-  //       beg: itemsPerPage * (page - 1),
-  //       end: page > totalOfPages ? len : itemsPerPage * page,
-  //     }
-  //   }
-
-  //   w 240
-  //   h 147
-
-  console.log(getCountriesData(countries))
+  if (error) {
+    return <h2>Not Found</h2>
+  }
 
   return (
-    <div className={styles.container}>
-      {getCountriesData(countries)
-        .slice(100, 108)
-        .map((country) => (
-          <div
-            key={country.name}
-            style={{ backgroundColor: elementColor }}
-            className={styles.countryCard}
-          >
-            <img
-              className={styles.flag}
-              src={country.flagImage}
-              alt={`${country.name} flag`}
-              width={290}
-              height={178}
-            />
-            <div className={styles.details}>
-              <p className={styles.countryName}>{country.name}</p>
-              <p className={styles.key}>
-                Population:{' '}
-                <span className={styles.value}>{country.population}</span>
-              </p>
-              <p className={styles.key}>
-                Region: <span className={styles.value}>{country.region}</span>
-              </p>
-              <p className={styles.key}>
-                Capital: <span className={styles.value}>{country.capital}</span>
-              </p>
-            </div>
-          </div>
-        ))}
+    <div style={{ paddingBottom: '5rem' }} className={styles.container}>
+      {!!countries.length &&
+        countries
+          .slice(firstItem, lastItem)
+          .map((country) => (
+            <CountryCard key={country.name} country={country} />
+          ))}
+
+      <button
+        type='button'
+        disabled={firstItem === 0}
+        onClick={() => setPage(page - 1)}
+      >
+        prev
+      </button>
+      <button
+        type='button'
+        onClick={() => setPage(page + 1)}
+        disabled={lastItem === countries.length}
+      >
+        next
+      </button>
     </div>
   )
 }
