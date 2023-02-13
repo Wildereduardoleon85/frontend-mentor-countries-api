@@ -30,10 +30,16 @@ export type Country = {
   flagImage: string
 }
 
+export type Region = 'America' | 'Africa' | 'Asia' | 'Oceania' | 'Europe'
+
+export type RegionSelected = Region | ''
+
 export type CountriesState = {
   countries: Country[]
-  isLoading: boolean
   error: string
+  isLoading: boolean
+  regionSelected: RegionSelected
+  searchKeywords: string
 }
 
 export type ApiResponse<T> = {

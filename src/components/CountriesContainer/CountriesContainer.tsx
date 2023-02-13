@@ -34,14 +34,6 @@ function CountriesContainer() {
     }
   }, [countries, page])
 
-  //   const arr: any = []
-
-  //   getCountriesData(countries).forEach((country) => {
-  //     if (country.name.toLowerCase().includes('bra')) {
-  //       arr.push(country)
-  //     }
-  //   })
-
   if (isLoading) {
     return <h2>Loading...</h2>
   }

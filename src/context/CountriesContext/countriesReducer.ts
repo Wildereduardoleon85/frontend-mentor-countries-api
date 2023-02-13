@@ -1,9 +1,11 @@
-import { CountriesState, Country } from '../../types'
+import { CountriesState, Country, RegionSelected } from '../../types'
 
 type CountriesAction =
   | { type: 'setCountries'; payload: Country[] }
   | { type: 'setLoading'; payload: boolean }
   | { type: 'setError'; payload: string }
+  | { type: 'setSearchKeywords'; payload: string }
+  | { type: 'setRegionSelected'; payload: RegionSelected }
 
 function countriesReducer(
   state: CountriesState,
@@ -26,6 +28,18 @@ function countriesReducer(
       return {
         ...state,
         error: action.payload,
+      }
+
+    case 'setSearchKeywords':
+      return {
+        ...state,
+        searchKeywords: action.payload,
+      }
+
+    case 'setRegionSelected':
+      return {
+        ...state,
+        regionSelected: action.payload,
       }
 
     default:

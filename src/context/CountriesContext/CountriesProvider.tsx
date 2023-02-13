@@ -1,5 +1,5 @@
 import { useMemo, useReducer } from 'react'
-import { CountriesState, Country } from '../../types'
+import { CountriesState, Country, RegionSelected } from '../../types'
 import CountriesContext from './CountriesContext'
 import countriesReducer from './countriesReducer'
 
@@ -9,8 +9,10 @@ type CountriesProviderProps = {
 
 const initialState: CountriesState = {
   countries: [],
+  searchKeywords: '',
   isLoading: false,
   error: '',
+  regionSelected: '',
 }
 
 function CountriesProvider({ children }: CountriesProviderProps) {
@@ -37,12 +39,28 @@ function CountriesProvider({ children }: CountriesProviderProps) {
     })
   }
 
+  function setSearchKeywords(searchKeywords: string) {
+    dispatch({
+      type: 'setSearchKeywords',
+      payload: searchKeywords,
+    })
+  }
+
+  function setRegionSelected(regionSelected: RegionSelected) {
+    dispatch({
+      type: 'setRegionSelected',
+      payload: regionSelected,
+    })
+  }
+
   const memoizedState = useMemo(
     () => ({
       state,
       setCountries,
       setLoading,
       setError,
+      setSearchKeywords,
+      setRegionSelected,
     }),
     [state, dispatch]
   )

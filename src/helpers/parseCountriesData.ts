@@ -1,5 +1,4 @@
-/* eslint-disable arrow-body-style */
-import { Country } from '../types'
+import { Country, Region } from '../types'
 
 function getNativeName(country: any) {
   if (country.name.nativeName) {
@@ -25,4 +24,31 @@ function parseCountriesData(countriesData: any[]): Country[] {
   }))
 }
 
-export default parseCountriesData
+function getCountriesByRegion(countries: Country[], region: Region): Country[] {
+  return countries.filter((country) => country.region === region)
+}
+
+//   const arr: any = []
+
+//   getCountriesData(countries).forEach((country) => {
+//     if (country.name.toLowerCase().includes('bra')) {
+//       arr.push(country)
+//     }
+//   })
+
+function getCountriesByKeywords(
+  countries: Country[],
+  keywords: string
+): Country[] {
+  const filteredCountries: Country[] = []
+
+  countries.forEach((country: Country) => {
+    if (country.name.toLowerCase().includes(keywords.toLowerCase())) {
+      filteredCountries.push(country)
+    }
+  })
+
+  return filteredCountries
+}
+
+export { parseCountriesData, getCountriesByRegion, getCountriesByKeywords }

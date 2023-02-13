@@ -12,6 +12,7 @@
     "react/require-default-props": "off",
     "react/prop-types": "off",
     "import/no-cycle": "off",
-    "object-curly-newline": "off"
+    "object-curly-newline": "off",
+    "operator-linebreak": "off"
   }
 }
