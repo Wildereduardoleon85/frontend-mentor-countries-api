@@ -28,14 +28,6 @@ function getCountriesByRegion(countries: Country[], region: Region): Country[] {
   return countries.filter((country) => country.region === region)
 }
 
-//   const arr: any = []
-
-//   getCountriesData(countries).forEach((country) => {
-//     if (country.name.toLowerCase().includes('bra')) {
-//       arr.push(country)
-//     }
-//   })
-
 function getCountriesByKeywords(
   countries: Country[],
   keywords: string

@@ -30,7 +30,7 @@ export type Country = {
   flagImage: string
 }
 
-export type Region = 'America' | 'Africa' | 'Asia' | 'Oceania' | 'Europe'
+export type Region = 'Americas' | 'Africa' | 'Asia' | 'Oceania' | 'Europe'
 
 export type RegionSelected = Region | ''
 

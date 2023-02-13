@@ -6,9 +6,8 @@ import styles from './Layout.module.css'
 function Layout() {
   const { isDarkMode } = useTheme()
 
-  const body = document.querySelector('body')
-
   useLayoutEffect(() => {
+    const body = document.querySelector('body')
     if (isDarkMode) {
       body?.classList.add('darkMode')
     } else {

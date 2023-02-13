@@ -41,10 +41,12 @@ function useCountries() {
   useEffect(() => {
     if (searchKeywords) {
       setCountries(getCountriesByKeywords(localStateCountries, searchKeywords))
+    } else if (!searchKeywords && regionSelected) {
+      setCountries(getCountriesByRegion(localStateCountries, regionSelected))
     } else {
       setCountries(localStateCountries)
     }
-  }, [searchKeywords])
+  }, [searchKeywords, regionSelected])
 
   return { isLoading, countries, error }
 }

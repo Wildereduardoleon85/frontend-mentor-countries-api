@@ -9,14 +9,20 @@ import styles from './Filter.module.css'
 
 function Filter() {
   const {
-    state: { regionSelected },
+    state: { regionSelected, searchKeywords },
     setRegionSelected,
+    setSearchKeywords,
   } = useContext(CountriesContext)
   const { elementColor } = useTheme()
   const [isActive, setIsActive] = useState<boolean>(false)
 
   function onSelectedRegion(isFirstItem: boolean, region?: Region): void {
     setIsActive(false)
+
+    if (searchKeywords) {
+      setSearchKeywords('')
+    }
+
     if (isFirstItem) {
       setRegionSelected('')
     } else {

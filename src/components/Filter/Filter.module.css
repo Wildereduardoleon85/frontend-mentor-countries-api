@@ -58,4 +58,10 @@
   .filterButton {
     margin-top: 2.5rem;
   }
+
+  .dropdown {
+    right: initial;
+    left: 0;
+    top: 145px;
+  }
 }

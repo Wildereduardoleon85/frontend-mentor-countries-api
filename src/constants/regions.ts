@@ -1,5 +1,5 @@
 import { Region } from '../types'
 
-const regions: Region[] = ['Africa', 'America', 'Asia', 'Europe', 'Oceania']
+const regions: Region[] = ['Africa', 'Americas', 'Asia', 'Europe', 'Oceania']
 
 export default regions
