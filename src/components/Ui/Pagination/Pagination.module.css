@@ -1,0 +1,33 @@
+.container {
+  margin: 1rem auto 0 auto;
+  max-width: fit-content;
+  display: flex;
+}
+
+.button {
+  margin: 0 0.5rem;
+  box-shadow: var(--shadow2);
+  padding-top: 0.5rem;
+  padding-bottom: 0.5rem;
+  display: flex;
+  align-items: center;
+}
+
+.nextButton,
+.prevButton {
+  padding-left: 2rem;
+  padding-right: 2rem;
+}
+
+.button:first-child {
+  margin-left: 0;
+}
+
+.button:last-child {
+  margin-right: 0;
+}
+
+.icon {
+  font-size: 1.125rem;
+  transform: translateY(-0.5px);
+}

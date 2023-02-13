@@ -3,6 +3,7 @@ import styles from './CountriesContainer.module.css'
 import { CountryCard } from '..'
 import { PaginationItems } from '../../types'
 import { useCountries } from '../../hooks'
+import { Pagination } from '../Ui'
 
 function getPaginationItems(
   itemsPerPage: number,
@@ -43,15 +44,16 @@ function CountriesContainer() {
   }
 
   return (
-    <div style={{ paddingBottom: '5rem' }} className={styles.container}>
-      {!!countries.length &&
-        countries
-          .slice(firstItem, lastItem)
-          .map((country) => (
-            <CountryCard key={country.name} country={country} />
-          ))}
+    <>
+      <div className={styles.container}>
+        {!!countries.length &&
+          countries
+            .slice(firstItem, lastItem)
+            .map((country) => (
+              <CountryCard key={country.name} country={country} />
+            ))}
 
-      <button
+        {/* <button
         type='button'
         disabled={firstItem === 0}
         onClick={() => setPage(page - 1)}
@@ -64,8 +66,10 @@ function CountriesContainer() {
         disabled={lastItem === countries.length}
       >
         next
-      </button>
-    </div>
+      </button> */}
+      </div>
+      <Pagination />
+    </>
   )
 }
 

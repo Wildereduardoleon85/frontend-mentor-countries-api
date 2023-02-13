@@ -1,10 +1,9 @@
 .countryCard {
   overflow: hidden;
   border-radius: 0.5rem;
-  box-shadow: var(--shadow);
-  margin-bottom: 4rem;
+  box-shadow: var(--shadow1);
+  margin-bottom: 1.5rem;
   max-width: 290px;
-  padding-bottom: 2rem;
 }
 
 .details {
@@ -14,7 +13,7 @@
 .countryName {
   font-size: 1.125rem;
   font-weight: 800;
-  margin-bottom: 1rem;
+  margin-bottom: 0.5rem;
 }
 
 .key {
@@ -29,7 +28,7 @@
 @media (max-width: 1260px) {
   .flag {
     width: 230px;
-    height: calc(230px * 0.6125);
+    height: calc(230px * 0.59);
   }
 
   .countryCard {
@@ -40,7 +39,7 @@
 @media (max-width: 1038px) {
   .flag {
     width: 400px;
-    height: calc(400px * 0.6125);
+    height: calc(400px * 0.59);
   }
 
   .countryCard {
@@ -51,7 +50,7 @@
 @media (max-width: 880px) {
   .flag {
     width: 340px;
-    height: calc(340px * 0.6125);
+    height: calc(340px * 0.59);
   }
 
   .countryCard {
@@ -62,7 +61,7 @@
 @media (max-width: 760px) {
   .flag {
     width: 450px;
-    height: calc(450px * 0.6125);
+    height: calc(450px * 0.59);
   }
 
   .countryCard {
@@ -75,7 +74,7 @@
 @media (max-width: 520px) {
   .flag {
     width: 340px;
-    height: calc(340px * 0.6125);
+    height: calc(340px * 0.59);
   }
 
   .countryCard {
@@ -86,7 +85,7 @@
 @media (max-width: 420px) {
   .flag {
     width: 280px;
-    height: calc(280px * 0.6125);
+    height: calc(280px * 0.59);
   }
 
   .countryCard {
@@ -97,7 +96,7 @@
 @media (max-width: 340px) {
   .flag {
     width: 240px;
-    height: calc(240px * 0.6125);
+    height: calc(240px * 0.59);
   }
 
   .countryCard {

@@ -18,8 +18,8 @@ function CountryCard({ country }: CountryCardProps) {
         className={styles.flag}
         src={country.flagImage}
         alt={`${country.name} flag`}
-        width={290}
-        height={178}
+        width={270}
+        height={158}
       />
       <div className={styles.details}>
         <p className={styles.countryName}>{country.name}</p>

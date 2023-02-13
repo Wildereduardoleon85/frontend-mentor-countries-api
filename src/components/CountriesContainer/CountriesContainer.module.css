@@ -4,7 +4,7 @@
   justify-content: space-between;
   gap: 1rem;
   grid-template-columns: auto auto auto auto;
-  margin-top: 3rem;
+  margin-top: 2rem;
 }
 
 @media (max-width: 1038px) {
