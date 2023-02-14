@@ -9,7 +9,7 @@
 }
 
 .navbar {
-  max-width: 1400px;
+  max-width: var(--maxWidth);
   margin: 0 auto;
   display: flex;
   height: 100%;
@@ -30,7 +30,7 @@
 }
 
 .icon {
-  font-size: 1rem;
+  font-size: 16px;
   margin-right: 0.5rem;
   transform: translateY(0.5px);
 }
@@ -38,5 +38,11 @@
 @media (min-width: 1432px) {
   .navbar {
     padding: 0;
+  }
+}
+
+@media (max-width: 380px) {
+  .themeLabel {
+    display: none;
   }
 }

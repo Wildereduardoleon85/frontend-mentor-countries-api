@@ -7,13 +7,20 @@
   margin-top: 2rem;
 }
 
-@media (max-width: 1038px) {
+@media (max-width: 1176px) {
   .container {
-    grid-template-columns: auto auto;
+    grid-template-columns: auto auto auto;
   }
 }
 
-@media (max-width: 760px) {
+@media (max-width: 896px) {
+  .container {
+    grid-template-columns: auto auto;
+    justify-content: space-around;
+  }
+}
+
+@media (max-width: 620px) {
   .container {
     display: block;
   }

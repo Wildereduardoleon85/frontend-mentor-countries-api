@@ -14,13 +14,15 @@ function CountryCard({ country }: CountryCardProps) {
       style={{ backgroundColor: elementColor }}
       className={styles.countryCard}
     >
-      <img
-        className={styles.flag}
-        src={country.flagImage}
-        alt={`${country.name} flag`}
-        width={270}
-        height={158}
-      />
+      <div className={styles.flagContainer}>
+        <img
+          src={country.flagImage}
+          alt={`${country.name} flag`}
+          width='100%'
+          height='100%'
+        />
+      </div>
+
       <div className={styles.details}>
         <p className={styles.countryName}>{country.name}</p>
         <p className={styles.key}>

@@ -1,6 +1,7 @@
 import { useCallback, useEffect, useState } from 'react'
 import { Button } from '..'
 import { usePagination, useTheme } from '../../../hooks'
+import useMediaQuery from '../../../hooks/useMediaQuery'
 import { ArrowLeft, ArrowRight } from '../../Icons'
 import styles from './Pagination.module.css'
 
@@ -14,10 +15,17 @@ function Pagination() {
     totalOfPages,
   } = usePagination()
   const { activeButton } = useTheme()
+  const { isSmallScreen, isExtraSmallScreen } = useMediaQuery()
 
-  const pagesToShow = 5
-  const defaultOffset = { from: 0, to: pagesToShow }
-  const [{ from, to }, setOffset] = useState(defaultOffset)
+  const pagesToShow = isSmallScreen ? 3 : 5
+  const [{ from, to }, setOffset] = useState({
+    from: 0,
+    to: pagesToShow,
+  })
+
+  const numberOfPages = [...Array(totalOfPages).keys()]
+    .slice(from, to)
+    .map((number) => number + 1)
 
   const onNextPageClick = useCallback(() => {
     setCurrentPage(currentPage + 1)
@@ -27,7 +35,7 @@ function Pagination() {
         to: to + pagesToShow,
       })
     }
-  }, [currentPage])
+  }, [currentPage, pagesToShow])
 
   const onPrevPageClick = useCallback(() => {
     setCurrentPage(currentPage - 1)
@@ -37,11 +45,11 @@ function Pagination() {
         to: to - pagesToShow,
       })
     }
-  }, [currentPage])
+  }, [currentPage, pagesToShow])
 
   useEffect(() => {
-    setOffset(defaultOffset)
-  }, [totalOfPages])
+    setOffset({ from: 0, to: pagesToShow })
+  }, [totalOfPages, pagesToShow])
 
   return (
     <div className={styles.container}>
@@ -53,18 +61,19 @@ function Pagination() {
         <ArrowLeft className={styles.icon} />
         &nbsp; Prev
       </Button>
-      {[...Array(totalOfPages).keys()].slice(from, to).map((page) => (
-        <Button
-          key={page + 1}
-          style={{
-            backgroundColor: currentPage === page + 1 ? activeButton : '',
-          }}
-          className={styles.button}
-          onClick={() => setCurrentPage(page + 1)}
-        >
-          {page + 1}
-        </Button>
-      ))}
+      {!isExtraSmallScreen &&
+        numberOfPages.map((page) => (
+          <Button
+            key={page}
+            style={{
+              backgroundColor: currentPage === page ? activeButton : '',
+            }}
+            className={styles.button}
+            onClick={() => setCurrentPage(page)}
+          >
+            {page}
+          </Button>
+        ))}
 
       <Button
         className={`${styles.button} ${styles.nextButton}`}

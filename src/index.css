@@ -7,6 +7,10 @@
   --white: hsl(0, 0%, 100%); /* Dark Mode Text & Light Mode Elements */
   --shadow1: 0px 2px 4px 2px rgba(0, 0, 0, 0.08);
   --shadow2: 0px 0px 6px 2px rgba(0, 0, 0, 0.233);
+  --countryCardWidth: 260px;
+  --countryCardWidth_sm: 320px;
+  --countryCardWidth_xs: 230px;
+  --maxWidth: 1366px;
 }
 
 * {

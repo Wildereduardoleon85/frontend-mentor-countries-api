@@ -3,7 +3,15 @@
   border-radius: 0.5rem;
   box-shadow: var(--shadow1);
   margin-bottom: 1.5rem;
-  max-width: 290px;
+  width: var(--countryCardWidth);
+  height: calc(var(--countryCardWidth) * 1.2444);
+}
+
+.flagContainer {
+  display: flex;
+  justify-content: center;
+  width: 100%;
+  height: calc(100% * 0.48);
 }
 
 .details {
@@ -19,87 +27,33 @@
 .key {
   font-weight: 600;
   line-height: 1.75rem;
+  font-size: 14px;
 }
 
 .value {
   font-weight: 300;
+  font-size: 14px;
 }
 
-@media (max-width: 1260px) {
-  .flag {
-    width: 230px;
-    height: calc(230px * 0.59);
-  }
-
+@media (max-width: 620px) {
   .countryCard {
-    max-width: 230px;
-  }
-}
-
-@media (max-width: 1038px) {
-  .flag {
-    width: 400px;
-    height: calc(400px * 0.59);
-  }
-
-  .countryCard {
-    max-width: 400px;
-  }
-}
-
-@media (max-width: 880px) {
-  .flag {
-    width: 340px;
-    height: calc(340px * 0.59);
-  }
-
-  .countryCard {
-    max-width: 340px;
-  }
-}
-
-@media (max-width: 760px) {
-  .flag {
-    width: 450px;
-    height: calc(450px * 0.59);
-  }
-
-  .countryCard {
-    max-width: 450px;
     margin-left: auto;
     margin-right: auto;
+    width: var(--countryCardWidth_sm);
+    height: calc(var(--countryCardWidth_sm) * 1.2444);
   }
 }
 
-@media (max-width: 520px) {
-  .flag {
-    width: 340px;
-    height: calc(340px * 0.59);
-  }
-
+@media (max-width: 380px) {
   .countryCard {
-    max-width: 340px;
+    width: var(--countryCardWidth);
+    height: calc(var(--countryCardWidth) * 1.2444);
   }
 }
 
-@media (max-width: 420px) {
-  .flag {
-    width: 280px;
-    height: calc(280px * 0.59);
-  }
-
+@media (max-width: 300px) {
   .countryCard {
-    max-width: 280px;
-  }
-}
-
-@media (max-width: 340px) {
-  .flag {
-    width: 240px;
-    height: calc(240px * 0.59);
-  }
-
-  .countryCard {
-    max-width: 240px;
+    width: var(--countryCardWidth_xs);
+    height: calc(var(--countryCardWidth_xs) * 1.2444);
   }
 }

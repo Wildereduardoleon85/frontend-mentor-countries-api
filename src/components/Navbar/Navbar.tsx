@@ -21,7 +21,9 @@ function Navbar() {
             ) : (
               <MoonIcon className={styles.icon} />
             )}
-            <p>{isDarkMode ? 'Light Mode' : 'Dark Mode'}</p>
+            <p className={styles.themeLabel}>
+              {isDarkMode ? 'Light Mode' : 'Dark Mode'}
+            </p>
           </Button>
         </div>
       </nav>
