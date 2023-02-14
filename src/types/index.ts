@@ -40,6 +40,7 @@ export type CountriesState = {
   isLoading: boolean
   regionSelected: RegionSelected
   searchKeywords: string
+  currentPage: number
 }
 
 export type ApiResponse<T> = {

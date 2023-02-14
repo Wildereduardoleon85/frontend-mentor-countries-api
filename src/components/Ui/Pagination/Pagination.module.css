@@ -13,6 +13,10 @@
   align-items: center;
 }
 
+.button.active {
+  background-color: red;
+}
+
 .nextButton,
 .prevButton {
   padding-left: 2rem;

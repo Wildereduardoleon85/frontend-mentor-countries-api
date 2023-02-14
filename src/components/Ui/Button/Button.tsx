@@ -6,6 +6,7 @@ type BaseButtonProps = {
   style?: Object
   onClick?: (e: MouseEvent<HTMLButtonElement>) => void
   className?: string
+  disabled?: boolean
 }
 
 interface ButtonElementProps extends BaseButtonProps {
@@ -16,7 +17,13 @@ interface ButtonComponentProps extends BaseButtonProps {
   children?: ReactNode
 }
 
-function Button({ onClick, className, children, style }: ButtonComponentProps) {
+function Button({
+  onClick,
+  className,
+  children,
+  style,
+  disabled,
+}: ButtonComponentProps) {
   const { isDarkMode } = useTheme()
 
   const suppliedClass = className || ''
@@ -33,6 +40,10 @@ function Button({ onClick, className, children, style }: ButtonComponentProps) {
 
   if (style) {
     props.style = style
+  }
+
+  if (disabled) {
+    props.disabled = disabled
   }
 
   // eslint-disable-next-line react/jsx-props-no-spreading, react/button-has-type

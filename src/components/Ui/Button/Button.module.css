@@ -10,11 +10,18 @@
 }
 
 .button:hover {
-  background-color: #f1f1f1;
+  background-color: #f0f0f0;
 }
 
 .button:focus-visible {
   border: 2px solid var(--darkBlue);
+}
+
+.button:disabled {
+  background-color: rgb(228, 228, 228);
+  color: rgb(187, 187, 187);
+  cursor: not-allowed;
+  box-shadow: none;
 }
 
 .button.dark {
@@ -29,4 +36,9 @@
 
 .button.dark:hover {
   background-color: #404c57;
+}
+
+.button.dark:disabled {
+  color: #7f7f7f;
+  background-color: #26333e;
 }

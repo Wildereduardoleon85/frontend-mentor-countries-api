@@ -2,7 +2,7 @@ import { useContext, useState } from 'react'
 import regions from '../../constants/regions'
 import { CountriesContext } from '../../context'
 import { useTheme } from '../../hooks'
-import { Region } from '../../types'
+import { Region, RegionSelected } from '../../types'
 import { ChevronDown } from '../Icons'
 import { Button, ClickAwayWrapper } from '../Ui'
 import styles from './Filter.module.css'
@@ -12,22 +12,23 @@ function Filter() {
     state: { regionSelected, searchKeywords },
     setRegionSelected,
     setSearchKeywords,
+    setCurrentPage,
   } = useContext(CountriesContext)
   const { elementColor } = useTheme()
   const [isActive, setIsActive] = useState<boolean>(false)
 
-  function onSelectedRegion(isFirstItem: boolean, region?: Region): void {
+  function onSelectedRegion(region: RegionSelected): void {
     setIsActive(false)
+
+    if (regionSelected !== region) {
+      setCurrentPage(1)
+    }
 
     if (searchKeywords) {
       setSearchKeywords('')
     }
 
-    if (isFirstItem) {
-      setRegionSelected('')
-    } else {
-      setRegionSelected(region as Region)
-    }
+    setRegionSelected(region)
   }
 
   return (
@@ -49,7 +50,7 @@ function Filter() {
           <li>
             <Button
               className={styles.buttonItem}
-              onClick={() => onSelectedRegion(true)}
+              onClick={() => onSelectedRegion('')}
             >
               All
             </Button>
@@ -58,7 +59,7 @@ function Filter() {
             <li key={region}>
               <Button
                 className={styles.buttonItem}
-                onClick={() => onSelectedRegion(false, region)}
+                onClick={() => onSelectedRegion(region)}
               >
                 {region}
               </Button>

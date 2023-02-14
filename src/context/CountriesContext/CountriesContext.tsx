@@ -8,6 +8,7 @@ type CountriesContextProps = {
   setError: (error: string) => void
   setSearchKeywords: (searchKeywords: string) => void
   setRegionSelected: (regionSelected: RegionSelected) => void
+  setCurrentPage: (currentPage: number) => void
 }
 
 const CountriesContext = createContext({} as CountriesContextProps)

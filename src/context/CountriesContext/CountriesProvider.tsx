@@ -9,6 +9,7 @@ type CountriesProviderProps = {
 
 const initialState: CountriesState = {
   countries: [],
+  currentPage: 1,
   searchKeywords: '',
   isLoading: false,
   error: '',
@@ -46,6 +47,13 @@ function CountriesProvider({ children }: CountriesProviderProps) {
     })
   }
 
+  function setCurrentPage(currentPage: number) {
+    dispatch({
+      type: 'setCurrentPage',
+      payload: currentPage,
+    })
+  }
+
   function setRegionSelected(regionSelected: RegionSelected) {
     dispatch({
       type: 'setRegionSelected',
@@ -61,6 +69,7 @@ function CountriesProvider({ children }: CountriesProviderProps) {
       setError,
       setSearchKeywords,
       setRegionSelected,
+      setCurrentPage,
     }),
     [state, dispatch]
   )

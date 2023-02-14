@@ -6,6 +6,7 @@ type CountriesAction =
   | { type: 'setError'; payload: string }
   | { type: 'setSearchKeywords'; payload: string }
   | { type: 'setRegionSelected'; payload: RegionSelected }
+  | { type: 'setCurrentPage'; payload: number }
 
 function countriesReducer(
   state: CountriesState,
@@ -40,6 +41,12 @@ function countriesReducer(
       return {
         ...state,
         regionSelected: action.payload,
+      }
+
+    case 'setCurrentPage':
+      return {
+        ...state,
+        currentPage: action.payload,
       }
 
     default:
