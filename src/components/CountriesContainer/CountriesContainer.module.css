@@ -7,6 +7,11 @@
   margin-top: 2rem;
 }
 
+.loaderContainer {
+  text-align: center;
+  margin-top: 9rem;
+}
+
 @media (max-width: 1176px) {
   .container {
     grid-template-columns: auto auto auto;

@@ -4,6 +4,52 @@
   font-size: 0.9rem;
 }
 
+.skeletonButton {
+  width: 100px;
+  height: 26px;
+  animation: skeleton 1.2s cubic-bezier(0, 0.2, 0.8, 1) infinite;
+}
+
+.skeletonButton.dark {
+  animation: skeletonDark 1.2s cubic-bezier(0, 0.2, 0.8, 1) infinite;
+}
+
+@keyframes skeleton {
+  0% {
+    background-color: #fff;
+  }
+  25% {
+    background-color: #f2f2f2;
+  }
+  50% {
+    background-color: #e5e5e5;
+  }
+  75% {
+    background-color: #f2f2f2;
+  }
+  100% {
+    background-color: #fff;
+  }
+}
+
+@keyframes skeletonDark {
+  0% {
+    background-color: #2b3945;
+  }
+  25% {
+    background-color: #404c57;
+  }
+  50% {
+    background-color: #55606a;
+  }
+  75% {
+    background-color: #404c57;
+  }
+  100% {
+    background-color: #2b3945;
+  }
+}
+
 .borders > p:first-of-type {
   font-weight: 600;
   min-width: fit-content;

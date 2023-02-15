@@ -6,6 +6,7 @@
   width: var(--countryCardWidth);
   height: calc(var(--countryCardWidth) * 1.2444);
   text-decoration: none;
+  display: block;
 }
 
 .flagContainer {

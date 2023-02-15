@@ -11,6 +11,7 @@
   --countryCardWidth_sm: 320px;
   --countryCardWidth_xs: 230px;
   --maxWidth: 1366px;
+  --navbarHeight: 5rem;
 }
 
 * {

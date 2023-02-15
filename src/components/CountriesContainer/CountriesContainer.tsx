@@ -1,14 +1,18 @@
 import styles from './CountriesContainer.module.css'
 import { CountryCard } from '..'
 import { useCountries, usePagination } from '../../hooks'
-import { Pagination } from '../Ui'
+import { Loader, Pagination } from '../Ui'
 
 function CountriesContainer() {
   const { isLoading, countries, error } = useCountries()
   const { firstItem, lastItem } = usePagination()
 
   if (isLoading) {
-    return <h2>Loading...</h2>
+    return (
+      <div className={styles.loaderContainer}>
+        <Loader />
+      </div>
+    )
   }
 
   if (error) {

@@ -1,4 +1,5 @@
 import { useMemo, useState } from 'react'
+import { getThemePreferenceFromLS } from '../../helpers'
 import ThemeContext from './ThemeContext'
 
 type ThemeProviderProps = {
@@ -6,7 +7,9 @@ type ThemeProviderProps = {
 }
 
 function ThemeProvider({ children }: ThemeProviderProps) {
-  const [isDarkMode, setIsDarkMode] = useState<boolean>(false)
+  const [isDarkMode, setIsDarkMode] = useState<boolean>(
+    getThemePreferenceFromLS()
+  )
 
   function toggleDarkMode() {
     setIsDarkMode(!isDarkMode)

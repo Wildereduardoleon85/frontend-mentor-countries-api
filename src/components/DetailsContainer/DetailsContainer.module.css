@@ -1,3 +1,8 @@
+.loaderContainer {
+  text-align: center;
+  margin-top: 13rem;
+}
+
 .backButton {
   padding: 0.5rem 2rem;
   box-shadow: var(--shadow2);
@@ -41,4 +46,42 @@
 
 .labels > p > span {
   font-weight: 300;
+}
+
+@media (max-width: 1176px) {
+  .flagImage {
+    width: 400px;
+    height: calc(400px * 0.7131);
+  }
+
+  .infoContainer {
+    padding-top: 0;
+  }
+}
+
+@media (max-width: 960px) {
+  .flagImage {
+    width: 350px;
+    height: calc(350px * 0.7131);
+  }
+
+  .labels:nth-child(2) {
+    margin-left: 2rem;
+  }
+}
+
+@media (max-width: 840px) {
+  .details {
+    display: block;
+  }
+
+  .flagImage {
+    width: 100%;
+    height: auto;
+  }
+
+  .infoContainer {
+    padding: 0;
+    margin-top: 2rem;
+  }
 }

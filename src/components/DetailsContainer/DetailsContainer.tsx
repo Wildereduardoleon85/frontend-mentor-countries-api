@@ -4,7 +4,7 @@ import { getCurrencies, getLanguages } from '../../helpers'
 import { CountryDetailsState } from '../../types'
 import formatNumber from '../../utils/formatNumber'
 import { ArrowLeft } from '../Icons'
-import { Button } from '../Ui'
+import { Button, Loader } from '../Ui'
 import styles from './DetailsContainer.module.css'
 
 type DetailsContainerProps = {
@@ -13,7 +13,15 @@ type DetailsContainerProps = {
 
 function DetailsContainer({ state }: DetailsContainerProps) {
   const navigate = useNavigate()
-  const { country } = state
+  const { country, isLoading } = state
+
+  if (isLoading) {
+    return (
+      <div className={styles.loaderContainer}>
+        <Loader />
+      </div>
+    )
+  }
 
   return (
     <div>
@@ -22,6 +30,7 @@ function DetailsContainer({ state }: DetailsContainerProps) {
       </Button>
       <div className={styles.details}>
         <img
+          className={styles.flagImage}
           src={country.flagImage}
           width={509}
           height={363}
