@@ -5,6 +5,7 @@
   margin-bottom: 1.5rem;
   width: var(--countryCardWidth);
   height: calc(var(--countryCardWidth) * 1.2444);
+  text-decoration: none;
 }
 
 .flagContainer {
@@ -27,12 +28,12 @@
 .key {
   font-weight: 600;
   line-height: 1.75rem;
-  font-size: 14px;
+  font-size: 0.9rem;
 }
 
 .value {
   font-weight: 300;
-  font-size: 14px;
+  font-size: 0.9rem;
 }
 
 @media (max-width: 620px) {
@@ -40,20 +41,32 @@
     margin-left: auto;
     margin-right: auto;
     width: var(--countryCardWidth_sm);
-    height: calc(var(--countryCardWidth_sm) * 1.2444);
+    height: calc(var(--countryCardWidth_sm) * 1.1);
+  }
+
+  .flagContainer {
+    height: calc(var(--countryCardWidth_sm) * 0.6);
   }
 }
 
 @media (max-width: 380px) {
   .countryCard {
     width: var(--countryCardWidth);
-    height: calc(var(--countryCardWidth) * 1.2444);
+    height: calc(var(--countryCardWidth) * 1.2);
+  }
+
+  .flagContainer {
+    height: calc(var(--countryCardWidth) * 0.6);
   }
 }
 
 @media (max-width: 300px) {
   .countryCard {
     width: var(--countryCardWidth_xs);
-    height: calc(var(--countryCardWidth_xs) * 1.2444);
+    height: calc(var(--countryCardWidth_xs) * 1.2);
+  }
+
+  .flagContainer {
+    height: calc(var(--countryCardWidth_xs) * 0.6);
   }
 }

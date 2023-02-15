@@ -1,0 +1,12 @@
+.searchContainer {
+  margin-top: 2rem;
+  display: flex;
+  justify-content: space-between;
+  position: relative;
+}
+
+@media (max-width: 670px) {
+  .searchContainer {
+    display: block;
+  }
+}

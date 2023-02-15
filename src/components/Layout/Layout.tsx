@@ -1,6 +1,8 @@
 import { useLayoutEffect } from 'react'
-import { CountriesContainer, Filter, Navbar, Search } from '..'
+import { Routes, Route } from 'react-router-dom'
+import { Navbar } from '..'
 import { useTheme } from '../../hooks'
+import { DetailsPage, HomePage } from '../pages'
 import styles from './Layout.module.css'
 
 function Layout() {
@@ -19,13 +21,10 @@ function Layout() {
     <>
       <Navbar />
       <main className={styles.mainContainer}>
-        <section className={styles.searchContainer}>
-          <Search />
-          <Filter />
-        </section>
-        <section>
-          <CountriesContainer />
-        </section>
+        <Routes>
+          <Route path='/' element={<HomePage />} />
+          <Route path='/:countryId' element={<DetailsPage />} />
+        </Routes>
       </main>
     </>
   )

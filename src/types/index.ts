@@ -9,25 +9,34 @@ export type ThemeState = {
 
 export type Country = {
   name: string
-  nativeName: string
   population: number
   region: string
-  subregion: string
   capital: string
+  flagImage: string
+  countryCode: string
+}
+
+export interface CountryDetails extends Country {
+  nativeName: string
+  subregion: string
   topLevelDomain: string[]
   currencies: {
-    code: string
-    name: string
-    symbol: string
-  }[]
+    [key: string]: {
+      code: string
+      name: string
+      symbol: string
+    }
+  }
   languages: {
-    iso639_1: string
-    iso639_2: string
-    name: string
-    nativeName: string
-  }[]
+    [key: string]: string
+  }
   borders: string[]
-  flagImage: string
+}
+
+export type CountryDetailsState = {
+  country: CountryDetails
+  isLoading: boolean
+  error: string
 }
 
 export type Region = 'Americas' | 'Africa' | 'Asia' | 'Oceania' | 'Europe'
@@ -36,6 +45,9 @@ export type RegionSelected = Region | ''
 
 export type CountriesState = {
   countries: Country[]
+  countryNamesByCode: {
+    [key: string]: string
+  }
   error: string
   isLoading: boolean
   regionSelected: RegionSelected

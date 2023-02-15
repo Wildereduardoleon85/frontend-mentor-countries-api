@@ -1,5 +1,7 @@
+import { Link } from 'react-router-dom'
 import { useTheme } from '../../hooks'
 import { Country } from '../../types'
+import formatNumber from '../../utils/formatNumber'
 import styles from './CountryCard.module.css'
 
 type CountryCardProps = {
@@ -7,12 +9,13 @@ type CountryCardProps = {
 }
 
 function CountryCard({ country }: CountryCardProps) {
-  const { elementColor } = useTheme()
+  const { elementColor, textColor } = useTheme()
 
   return (
-    <div
-      style={{ backgroundColor: elementColor }}
+    <Link
+      style={{ backgroundColor: elementColor, color: textColor }}
       className={styles.countryCard}
+      to={`/${country.countryCode}`}
     >
       <div className={styles.flagContainer}>
         <img
@@ -26,7 +29,10 @@ function CountryCard({ country }: CountryCardProps) {
       <div className={styles.details}>
         <p className={styles.countryName}>{country.name}</p>
         <p className={styles.key}>
-          Population: <span className={styles.value}>{country.population}</span>
+          Population:{' '}
+          <span className={styles.value}>
+            {formatNumber(country.population)}
+          </span>
         </p>
         <p className={styles.key}>
           Region: <span className={styles.value}>{country.region}</span>
@@ -35,7 +41,7 @@ function CountryCard({ country }: CountryCardProps) {
           Capital: <span className={styles.value}>{country.capital}</span>
         </p>
       </div>
-    </div>
+    </Link>
   )
 }
 

@@ -7,6 +7,7 @@ type CountriesAction =
   | { type: 'setSearchKeywords'; payload: string }
   | { type: 'setRegionSelected'; payload: RegionSelected }
   | { type: 'setCurrentPage'; payload: number }
+  | { type: 'setCountryNamesByCode'; payload: { [key: string]: string } }
 
 function countriesReducer(
   state: CountriesState,
@@ -47,6 +48,12 @@ function countriesReducer(
       return {
         ...state,
         currentPage: action.payload,
+      }
+
+    case 'setCountryNamesByCode':
+      return {
+        ...state,
+        countryNamesByCode: action.payload,
       }
 
     default:

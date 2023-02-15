@@ -1,0 +1,44 @@
+.backButton {
+  padding: 0.5rem 2rem;
+  box-shadow: var(--shadow2);
+  margin-top: 5rem;
+  display: flex;
+  align-items: center;
+}
+
+.icon {
+  font-size: 1.125rem;
+  transform: translateY(-0.5px);
+}
+
+.details {
+  margin-top: 5rem;
+  display: flex;
+}
+
+.infoContainer {
+  width: 100%;
+  padding: 2rem 1rem 2rem 3rem;
+}
+
+.labelsContainer {
+  display: flex;
+  margin-top: 2rem;
+}
+
+.labels {
+  font-size: 0.9rem;
+}
+
+.labels:nth-child(2) {
+  margin-left: 6rem;
+}
+
+.labels > p {
+  line-height: 1.8rem;
+  font-weight: 600;
+}
+
+.labels > p > span {
+  font-weight: 300;
+}

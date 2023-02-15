@@ -9,6 +9,7 @@ type CountriesContextProps = {
   setSearchKeywords: (searchKeywords: string) => void
   setRegionSelected: (regionSelected: RegionSelected) => void
   setCurrentPage: (currentPage: number) => void
+  setCountryNamesByCode: (countryNamesByCode: { [key: string]: string }) => void
 }
 
 const CountriesContext = createContext({} as CountriesContextProps)

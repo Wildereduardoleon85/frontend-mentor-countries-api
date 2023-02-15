@@ -9,6 +9,7 @@ type CountriesProviderProps = {
 
 const initialState: CountriesState = {
   countries: [],
+  countryNamesByCode: {},
   currentPage: 1,
   searchKeywords: '',
   isLoading: false,
@@ -61,6 +62,15 @@ function CountriesProvider({ children }: CountriesProviderProps) {
     })
   }
 
+  function setCountryNamesByCode(countryNamesByCode: {
+    [key: string]: string
+  }) {
+    dispatch({
+      type: 'setCountryNamesByCode',
+      payload: countryNamesByCode,
+    })
+  }
+
   const memoizedState = useMemo(
     () => ({
       state,
@@ -70,6 +80,7 @@ function CountriesProvider({ children }: CountriesProviderProps) {
       setSearchKeywords,
       setRegionSelected,
       setCurrentPage,
+      setCountryNamesByCode,
     }),
     [state, dispatch]
   )
