@@ -19,24 +19,6 @@ function parseCountriesData(countriesData: any[]): Country[] {
   }))
 }
 
-function parseCountryDetailsData(countriesData: any[]): CountryDetails {
-  const country = countriesData[0]
-  return {
-    name: country.name.common,
-    nativeName: getNativeName(country),
-    population: country.population,
-    region: country.region,
-    subregion: country.subregion,
-    capital: country.capital,
-    topLevelDomain: country.tld,
-    currencies: country.currencies,
-    languages: country.languages,
-    borders: country.borders || [],
-    flagImage: country.flags.png,
-    countryCode: country.cca3,
-  }
-}
-
 function getCountriesByRegion(countries: Country[], region: Region): Country[] {
   return countries.filter((country) => country.region === region)
 }
@@ -57,17 +39,25 @@ function getCountriesByKeywords(
 }
 
 function getLanguages(languages: { [key: string]: string }): string {
-  return Object.values(languages)
-    .map((lang) => lang)
-    .join(', ')
+  if (languages) {
+    return Object.values(languages)
+      .map((lang) => lang)
+      .join(', ')
+  }
+
+  return ''
 }
 
 function getCurrencies(currencies: {
   [key: string]: { name: string; symbol: string }
 }): string {
-  return Object.values(currencies)
-    .map((currency) => currency.name)
-    .join(', ')
+  if (currencies) {
+    return Object.values(currencies)
+      .map((currency) => currency.name)
+      .join(', ')
+  }
+
+  return ''
 }
 
 function getCountryNamesByCode(countries: any[]) {
@@ -80,12 +70,30 @@ function getCountryNamesByCode(countries: any[]) {
   return index
 }
 
+function getCountryByCode(countries: any[], code: string): CountryDetails {
+  const foundCountry = countries.find((country) => country.cca3 === code)
+  return {
+    name: foundCountry.name.common,
+    nativeName: getNativeName(foundCountry),
+    population: foundCountry.population,
+    region: foundCountry.region,
+    subregion: foundCountry.subregion,
+    capital: foundCountry.capital,
+    topLevelDomain: foundCountry.tld,
+    currencies: foundCountry.currencies,
+    languages: foundCountry.languages,
+    borders: foundCountry.borders || [],
+    flagImage: foundCountry.flags.png,
+    countryCode: foundCountry.cca3,
+  }
+}
+
 export {
   parseCountriesData,
   getCountriesByRegion,
   getCountriesByKeywords,
-  parseCountryDetailsData,
   getLanguages,
   getCurrencies,
   getCountryNamesByCode,
+  getCountryByCode,
 }

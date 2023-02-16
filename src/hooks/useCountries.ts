@@ -1,21 +1,18 @@
 import { useContext, useEffect, useState } from 'react'
 import { CountriesContext } from '../context'
-import { getCountriesByKeywords, getCountriesByRegion } from '../helpers'
-import { fecthAllCountries } from '../services/countriesService'
+import {
+  getCountriesByKeywords,
+  getCountriesByRegion,
+  parseCountriesData,
+} from '../helpers'
+import fecthAllCountries from '../services/countriesService'
 import { Country } from '../types'
 
 function useCountries() {
   const {
-    state: {
-      isLoading,
-      countries,
-      regionSelected,
-      searchKeywords,
-      countryNamesByCode,
-    },
+    state: { isLoading, countries, regionSelected, searchKeywords },
     setCountries,
     setLoading,
-    setCountryNamesByCode,
   } = useContext(CountriesContext)
 
   const [localStateCountries, setLocalStateCountries] = useState<Country[]>([])
@@ -23,10 +20,10 @@ function useCountries() {
   async function setAllCountries() {
     setLoading(true)
     const data = await fecthAllCountries()
+    const parsedCountries = parseCountriesData(data)
     setLoading(false)
-    setCountries(data.parsedCountries)
-    setLocalStateCountries(data.parsedCountries)
-    setCountryNamesByCode(data.countryNamesByCode)
+    setCountries(parsedCountries)
+    setLocalStateCountries(parsedCountries)
   }
 
   useEffect(() => {
@@ -51,7 +48,7 @@ function useCountries() {
     }
   }, [searchKeywords, regionSelected, localStateCountries])
 
-  return { isLoading, countries, countryNamesByCode }
+  return { isLoading, countries }
 }
 
 export default useCountries

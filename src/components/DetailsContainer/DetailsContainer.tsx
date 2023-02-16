@@ -13,7 +13,7 @@ type DetailsContainerProps = {
 
 function DetailsContainer({ state }: DetailsContainerProps) {
   const navigate = useNavigate()
-  const { country, isLoading } = state
+  const { country, countryNamesByCode, isLoading } = state
 
   if (isLoading) {
     return (
@@ -70,7 +70,10 @@ function DetailsContainer({ state }: DetailsContainerProps) {
               </div>
             </div>
           </div>
-          <CountryBorders borders={country.borders} />
+          <CountryBorders
+            borders={country.borders}
+            countryNamesByCode={countryNamesByCode}
+          />
         </div>
       </div>
     </div>

@@ -31,7 +31,8 @@
 
 .buttonItem {
   background: none;
-  width: 100%;
+  width: calc(100% - 4px);
+  margin-left: 2px;
   text-align: start;
   height: 30px;
   display: flex;

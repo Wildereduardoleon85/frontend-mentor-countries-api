@@ -35,6 +35,9 @@ export interface CountryDetails extends Country {
 
 export type CountryDetailsState = {
   country: CountryDetails
+  countryNamesByCode: {
+    [key: string]: string
+  }
   isLoading: boolean
 }
 
@@ -44,9 +47,6 @@ export type RegionSelected = Region | ''
 
 export type CountriesState = {
   countries: Country[]
-  countryNamesByCode: {
-    [key: string]: string
-  }
   isLoading: boolean
   regionSelected: RegionSelected
   searchKeywords: string

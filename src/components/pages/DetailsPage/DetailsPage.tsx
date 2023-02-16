@@ -1,8 +1,9 @@
 import { useEffect, useState } from 'react'
 import { useLocation } from 'react-router-dom'
 import { DetailsContainer } from '../..'
-import { fetchCountryByCode } from '../../../services/countriesService'
+import { getCountryByCode, getCountryNamesByCode } from '../../../helpers'
 import { CountryDetailsState } from '../../../types'
+import fecthAllCountries from '../../../services/countriesService'
 
 const initialState: CountryDetailsState = {
   country: {
@@ -27,6 +28,9 @@ const initialState: CountryDetailsState = {
     },
     borders: [],
   },
+  countryNamesByCode: {
+    '': '',
+  },
   isLoading: false,
 }
 
@@ -36,9 +40,10 @@ function DetailsPage() {
 
   async function setCountryDetails() {
     setState({ ...state, isLoading: true })
-    const data = await fetchCountryByCode(pathname)
-    setState({ ...state, isLoading: false })
-    setState({ ...state, country: data })
+    const countries = await fecthAllCountries()
+    const country = getCountryByCode(countries, pathname.replace('/', ''))
+    const countryNamesByCode = getCountryNamesByCode(countries)
+    setState({ ...state, isLoading: false, country, countryNamesByCode })
   }
 
   useEffect(() => {
