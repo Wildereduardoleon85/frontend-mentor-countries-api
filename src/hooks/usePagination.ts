@@ -35,7 +35,7 @@ function buildPagination(
   for (let index = 0; index < totalOfPages; index += offset) {
     pagesMatrix.push(
       [...Array(totalOfPages).keys()]
-        .map((x) => x + 1)
+        .map((page) => page + 1)
         .slice(index, index + offset)
     )
   }
@@ -89,7 +89,7 @@ function usePagination() {
 
   const numberOfPages = [...Array(totalOfPages).keys()]
     .slice(from, to)
-    .map((number) => number + 1)
+    .map((key) => key + 1)
 
   return {
     firstItem,
