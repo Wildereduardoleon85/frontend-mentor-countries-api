@@ -1,6 +1,7 @@
 import { useState, useEffect, useContext } from 'react'
 import { CountriesContext } from '../context'
 import { PaginationItems } from '../types'
+import useMediaQuery from './useMediaQuery'
 
 const defaultPagination = {
   firstItem: 0,
@@ -23,13 +24,46 @@ function getPaginationItems(
   }
 }
 
+function buildPagination(
+  totalOfPages: number,
+  offset: number,
+  currentPage: number
+): number[] | undefined {
+  const pagesMatrix: number[][] = []
+  let section: number[] | undefined
+
+  for (let index = 0; index < totalOfPages; index += offset) {
+    pagesMatrix.push(
+      [...Array(totalOfPages).keys()]
+        .map((x) => x + 1)
+        .slice(index, index + offset)
+    )
+  }
+
+  pagesMatrix.forEach((matrix) => {
+    if (matrix.includes(currentPage)) {
+      section = matrix
+    }
+  })
+
+  return section
+}
+
 function usePagination() {
   const {
     state: { countries, currentPage },
     setCurrentPage,
   } = useContext(CountriesContext)
+  const { isSmallScreen } = useMediaQuery()
+
+  const pagesToShow = isSmallScreen ? 3 : 5
+
   const [{ firstItem, lastItem }, setPagination] =
     useState<PaginationItems>(defaultPagination)
+  const [{ from, to }, setOffset] = useState({
+    from: 0,
+    to: pagesToShow,
+  })
 
   const limit = countries.length
   const itemsPerPage = 8
@@ -42,6 +76,21 @@ function usePagination() {
     }
   }, [countries, currentPage])
 
+  useEffect(() => {
+    const pagination = buildPagination(totalOfPages, pagesToShow, currentPage)
+
+    if (pagination) {
+      setOffset({
+        from: pagination[0] - 1,
+        to: pagination[pagination.length - 1],
+      })
+    }
+  }, [totalOfPages, pagesToShow, currentPage])
+
+  const numberOfPages = [...Array(totalOfPages).keys()]
+    .slice(from, to)
+    .map((number) => number + 1)
+
   return {
     firstItem,
     lastItem,
@@ -49,6 +98,7 @@ function usePagination() {
     limit,
     itemsPerPage,
     totalOfPages,
+    numberOfPages,
     setCurrentPage,
   }
 }
