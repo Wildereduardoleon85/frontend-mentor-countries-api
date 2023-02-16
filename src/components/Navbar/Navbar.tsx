@@ -20,7 +20,7 @@ function Navbar() {
       <nav className={styles.navbar}>
         <h1>Where in the world?</h1>
         <div className={styles.switchButton}>
-          <Button onClick={onToggleDarkMode}>
+          <Button onClick={onToggleDarkMode} ariaLabel='toggle-dark-mode'>
             {isDarkMode ? (
               <SunIcon className={styles.icon} />
             ) : (
