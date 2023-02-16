@@ -9,14 +9,12 @@ function useCountries() {
     state: {
       isLoading,
       countries,
-      error,
       regionSelected,
       searchKeywords,
       countryNamesByCode,
     },
     setCountries,
     setLoading,
-    setError,
     setCountryNamesByCode,
   } = useContext(CountriesContext)
 
@@ -24,15 +22,11 @@ function useCountries() {
 
   async function setAllCountries() {
     setLoading(true)
-    const { ok, data, error: apiError } = await fecthAllCountries()
+    const data = await fecthAllCountries()
     setLoading(false)
-    if (ok && data) {
-      setCountries(data.parsedCountries)
-      setLocalStateCountries(data.parsedCountries)
-      setCountryNamesByCode(data.countryNamesByCode)
-    } else {
-      setError(apiError as string)
-    }
+    setCountries(data.parsedCountries)
+    setLocalStateCountries(data.parsedCountries)
+    setCountryNamesByCode(data.countryNamesByCode)
   }
 
   useEffect(() => {
@@ -57,7 +51,7 @@ function useCountries() {
     }
   }, [searchKeywords, regionSelected, localStateCountries])
 
-  return { isLoading, countries, countryNamesByCode, error }
+  return { isLoading, countries, countryNamesByCode }
 }
 
 export default useCountries

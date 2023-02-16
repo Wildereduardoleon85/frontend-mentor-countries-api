@@ -28,7 +28,6 @@ const initialState: CountryDetailsState = {
     borders: [],
   },
   isLoading: false,
-  error: '',
 }
 
 function DetailsPage() {
@@ -37,13 +36,9 @@ function DetailsPage() {
 
   async function setCountryDetails() {
     setState({ ...state, isLoading: true })
-    const { ok, data, error: apiError } = await fetchCountryByCode(pathname)
+    const data = await fetchCountryByCode(pathname)
     setState({ ...state, isLoading: false })
-    if (ok && data) {
-      setState({ ...state, country: data })
-    } else {
-      setState({ ...state, error: apiError as string })
-    }
+    setState({ ...state, country: data })
   }
 
   useEffect(() => {

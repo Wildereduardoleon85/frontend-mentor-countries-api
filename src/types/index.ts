@@ -36,7 +36,6 @@ export interface CountryDetails extends Country {
 export type CountryDetailsState = {
   country: CountryDetails
   isLoading: boolean
-  error: string
 }
 
 export type Region = 'Americas' | 'Africa' | 'Asia' | 'Oceania' | 'Europe'
@@ -48,17 +47,10 @@ export type CountriesState = {
   countryNamesByCode: {
     [key: string]: string
   }
-  error: string
   isLoading: boolean
   regionSelected: RegionSelected
   searchKeywords: string
   currentPage: number
-}
-
-export type ApiResponse<T> = {
-  ok: boolean
-  data?: T
-  error?: string
 }
 
 export type PaginationItems = {

@@ -4,7 +4,7 @@ import { useCountries, usePagination } from '../../hooks'
 import { Loader, Pagination } from '../Ui'
 
 function CountriesContainer() {
-  const { isLoading, countries, error } = useCountries()
+  const { isLoading, countries } = useCountries()
   const { firstItem, lastItem } = usePagination()
 
   if (isLoading) {
@@ -13,10 +13,6 @@ function CountriesContainer() {
         <Loader />
       </div>
     )
-  }
-
-  if (error) {
-    return <h2>Not Found</h2>
   }
 
   return (

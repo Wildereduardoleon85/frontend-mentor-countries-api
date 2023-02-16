@@ -13,7 +13,6 @@ const initialState: CountriesState = {
   currentPage: 1,
   searchKeywords: '',
   isLoading: false,
-  error: '',
   regionSelected: '',
 }
 
@@ -31,13 +30,6 @@ function CountriesProvider({ children }: CountriesProviderProps) {
     dispatch({
       type: 'setLoading',
       payload: isLoading,
-    })
-  }
-
-  function setError(error: string) {
-    dispatch({
-      type: 'setError',
-      payload: error,
     })
   }
 
@@ -76,7 +68,6 @@ function CountriesProvider({ children }: CountriesProviderProps) {
       state,
       setCountries,
       setLoading,
-      setError,
       setSearchKeywords,
       setRegionSelected,
       setCurrentPage,

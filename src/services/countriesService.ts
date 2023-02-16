@@ -3,7 +3,8 @@ import {
   parseCountriesData,
   parseCountryDetailsData,
 } from '../helpers'
-import { ApiResponse, Country, CountryDetails } from '../types'
+import localData from '../data/countries.json'
+import { Country, CountryDetails } from '../types'
 
 const baseUrl = import.meta.env.VITE_COUNTRIES_BASE_URL
 
@@ -12,40 +13,37 @@ type CountriesData = {
   countryNamesByCode: { [key: string]: string }
 }
 
-async function fecthAllCountries(): Promise<ApiResponse<CountriesData>> {
+async function fecthAllCountries(): Promise<CountriesData> {
   try {
     const response = await fetch(`${baseUrl}/all`)
     const data = await response.json()
     const parsedCountries = parseCountriesData(data)
     const countryNamesByCode = getCountryNamesByCode(data)
     return {
-      ok: true,
-      data: { parsedCountries, countryNamesByCode },
+      parsedCountries,
+      countryNamesByCode,
     }
   } catch (error) {
-    return {
-      ok: false,
-      error: error instanceof Error ? error.message : 'Server error',
-    }
+    const parsedCountries = parseCountriesData(localData)
+    const countryNamesByCode = getCountryNamesByCode(localData)
+    return { parsedCountries, countryNamesByCode }
   }
 }
 
 async function fetchCountryByCode(
   countryPath: string
-): Promise<ApiResponse<CountryDetails>> {
+): Promise<CountryDetails> {
   try {
     const response = await fetch(`${baseUrl}/alpha${countryPath}`)
     const data = await response.json()
-    const parsedCountry = parseCountryDetailsData(data)
-    return {
-      ok: true,
-      data: parsedCountry,
-    }
+    return parseCountryDetailsData(data)
   } catch (error) {
-    return {
-      ok: false,
-      error: error instanceof Error ? error.message : 'Server error',
-    }
+    const foundCountry = [
+      localData.find(
+        (country) => country.cca3 === countryPath.replace('/', '')
+      ),
+    ]
+    return parseCountryDetailsData(foundCountry)
   }
 }
 

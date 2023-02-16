@@ -3,7 +3,6 @@ import { CountriesState, Country, RegionSelected } from '../../types'
 type CountriesAction =
   | { type: 'setCountries'; payload: Country[] }
   | { type: 'setLoading'; payload: boolean }
-  | { type: 'setError'; payload: string }
   | { type: 'setSearchKeywords'; payload: string }
   | { type: 'setRegionSelected'; payload: RegionSelected }
   | { type: 'setCurrentPage'; payload: number }
@@ -24,12 +23,6 @@ function countriesReducer(
       return {
         ...state,
         isLoading: action.payload,
-      }
-
-    case 'setError':
-      return {
-        ...state,
-        error: action.payload,
       }
 
     case 'setSearchKeywords':
