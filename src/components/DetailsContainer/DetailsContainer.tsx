@@ -7,6 +7,9 @@ import { ArrowLeft } from '../Icons'
 import { Button, Loader } from '../Ui'
 import styles from './DetailsContainer.module.css'
 
+const FLAG_WIDTH = 480
+const FLAG_HEIGHT = FLAG_WIDTH * 0.6118
+
 type DetailsContainerProps = {
   state: CountryDetailsState
 }
@@ -32,7 +35,8 @@ function DetailsContainer({ state }: DetailsContainerProps) {
         <img
           className={styles.flagImage}
           src={country.flagImage}
-          width={480}
+          width={FLAG_WIDTH}
+          height={FLAG_HEIGHT}
           alt={`${country.name}-flag`}
         />
         <div className={styles.infoContainer}>

@@ -83,7 +83,7 @@ function getCountryByCode(countries: any[], code: string): CountryDetails {
     currencies: foundCountry.currencies,
     languages: foundCountry.languages,
     borders: foundCountry.borders || [],
-    flagImage: foundCountry.flags.svg,
+    flagImage: foundCountry.flags.png,
     countryCode: foundCountry.cca3,
   }
 }

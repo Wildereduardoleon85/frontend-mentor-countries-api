@@ -51,6 +51,7 @@
 @media (max-width: 1176px) {
   .flagImage {
     width: 400px;
+    height: calc(400px * 0.6118);
   }
 
   .infoContainer {
@@ -61,6 +62,7 @@
 @media (max-width: 960px) {
   .flagImage {
     width: 350px;
+    height: calc(350px * 0.6118);
   }
 
   .labels:nth-child(2) {
