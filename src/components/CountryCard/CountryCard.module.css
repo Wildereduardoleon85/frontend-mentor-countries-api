@@ -4,16 +4,9 @@
   box-shadow: var(--shadow1);
   margin-bottom: 1.5rem;
   width: var(--countryCardWidth);
-  height: calc(var(--countryCardWidth) * 1.2444);
+  height: calc(var(--countryCardWidth) * 1.3);
   text-decoration: none;
   display: block;
-}
-
-.flagContainer {
-  display: flex;
-  justify-content: center;
-  width: 100%;
-  height: calc(100% * 0.48);
 }
 
 .details {
@@ -42,32 +35,33 @@
     margin-left: auto;
     margin-right: auto;
     width: var(--countryCardWidth_sm);
-    height: calc(var(--countryCardWidth_sm) * 1.1);
+    height: auto;
   }
 
-  .flagContainer {
-    height: calc(var(--countryCardWidth_sm) * 0.6);
+  .flag {
+    width: var(--countryCardWidth_sm);
+    height: calc(var(--countryCardWidth_sm) * 0.6118);
   }
 }
 
 @media (max-width: 380px) {
   .countryCard {
     width: var(--countryCardWidth);
-    height: calc(var(--countryCardWidth) * 1.2);
   }
 
-  .flagContainer {
-    height: calc(var(--countryCardWidth) * 0.6);
+  .flag {
+    width: var(--countryCardWidth);
+    height: calc(var(--countryCardWidth) * 0.6118);
   }
 }
 
 @media (max-width: 300px) {
   .countryCard {
     width: var(--countryCardWidth_xs);
-    height: calc(var(--countryCardWidth_xs) * 1.2);
   }
 
-  .flagContainer {
-    height: calc(var(--countryCardWidth_xs) * 0.6);
+  .flag {
+    width: var(--countryCardWidth_xs);
+    height: calc(var(--countryCardWidth_xs) * 0.6118);
   }
 }

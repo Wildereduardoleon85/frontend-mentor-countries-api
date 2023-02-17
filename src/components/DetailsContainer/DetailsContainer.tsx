@@ -32,8 +32,7 @@ function DetailsContainer({ state }: DetailsContainerProps) {
         <img
           className={styles.flagImage}
           src={country.flagImage}
-          width={509}
-          height={363}
+          width={480}
           alt={`${country.name}-flag`}
         />
         <div className={styles.infoContainer}>

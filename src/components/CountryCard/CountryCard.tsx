@@ -8,6 +8,9 @@ type CountryCardProps = {
   country: Country
 }
 
+const FLAG_WIDTH = 260
+const FLAG_HIEGHT = FLAG_WIDTH * 0.6118
+
 function CountryCard({ country }: CountryCardProps) {
   const { elementColor, textColor } = useTheme()
 
@@ -17,14 +20,13 @@ function CountryCard({ country }: CountryCardProps) {
       className={styles.countryCard}
       to={`/${country.countryCode}`}
     >
-      <div className={styles.flagContainer}>
-        <img
-          src={country.flagImage}
-          alt={`${country.name} flag`}
-          width='100%'
-          height='100%'
-        />
-      </div>
+      <img
+        className={styles.flag}
+        src={country.flagImage}
+        alt={`${country.name} flag`}
+        width={FLAG_WIDTH}
+        height={FLAG_HIEGHT}
+      />
 
       <div className={styles.details}>
         <p className={styles.countryName}>{country.name}</p>
