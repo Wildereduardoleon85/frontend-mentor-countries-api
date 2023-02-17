@@ -14,7 +14,7 @@ function parseCountriesData(countriesData: any[]): Country[] {
     population: country.population,
     region: country.region,
     capital: country.capital,
-    flagImage: country.flags.png,
+    flagImage: country.flags.svg,
     countryCode: country.cca3,
   }))
 }
@@ -83,7 +83,7 @@ function getCountryByCode(countries: any[], code: string): CountryDetails {
     currencies: foundCountry.currencies,
     languages: foundCountry.languages,
     borders: foundCountry.borders || [],
-    flagImage: foundCountry.flags.png,
+    flagImage: foundCountry.flags.svg,
     countryCode: foundCountry.cca3,
   }
 }

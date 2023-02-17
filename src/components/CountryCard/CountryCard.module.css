@@ -9,6 +9,18 @@
   display: block;
 }
 
+.flagContainer {
+  width: 100%;
+  height: calc(var(--countryCardWidth) * 0.58);
+}
+
+.flag {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center;
+}
+
 .details {
   padding: 1rem;
 }
@@ -38,8 +50,7 @@
     height: auto;
   }
 
-  .flag {
-    width: var(--countryCardWidth_sm);
+  .flagContainer {
     height: calc(var(--countryCardWidth_sm) * 0.6118);
   }
 }
@@ -49,8 +60,7 @@
     width: var(--countryCardWidth);
   }
 
-  .flag {
-    width: var(--countryCardWidth);
+  .flagContainer {
     height: calc(var(--countryCardWidth) * 0.6118);
   }
 }
@@ -60,8 +70,7 @@
     width: var(--countryCardWidth_xs);
   }
 
-  .flag {
-    width: var(--countryCardWidth_xs);
+  .flagContainer {
     height: calc(var(--countryCardWidth_xs) * 0.6118);
   }
 }

@@ -11,6 +11,14 @@
   align-items: center;
 }
 
+.flagContainer {
+  width: 40%;
+}
+
+.flagImage {
+  width: 100%;
+}
+
 .icon {
   font-size: 1.125rem;
   transform: translateY(-0.5px);
@@ -22,7 +30,7 @@
 }
 
 .infoContainer {
-  width: 100%;
+  width: 60%;
   padding: 2rem 1rem 2rem 3rem;
 }
 
@@ -49,22 +57,12 @@
 }
 
 @media (max-width: 1176px) {
-  .flagImage {
-    width: 400px;
-    height: calc(400px * 0.6118);
-  }
-
   .infoContainer {
     padding-top: 0;
   }
 }
 
 @media (max-width: 960px) {
-  .flagImage {
-    width: 350px;
-    height: calc(350px * 0.6118);
-  }
-
   .labels:nth-child(2) {
     margin-left: 2rem;
   }
@@ -73,15 +71,24 @@
 @media (max-width: 840px) {
   .details {
     display: block;
-  }
-
-  .flagImage {
-    width: 100%;
-    height: auto;
+    width: 500px;
+    margin-left: auto;
+    margin-right: auto;
   }
 
   .infoContainer {
     padding: 0;
     margin-top: 2rem;
+    width: 100%;
+  }
+
+  .flagContainer {
+    width: 100%;
+  }
+}
+
+@media (max-width: 560px) {
+  .details {
+    width: 100%;
   }
 }
