@@ -22,7 +22,6 @@ function CountryCard({ country }: CountryCardProps) {
           className={styles.flag}
           src={country.flagImage}
           alt={`${country.name} flag`}
-          loading='lazy'
         />
       </div>
 
